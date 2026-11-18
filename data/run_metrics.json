@@ -1,0 +1,8 @@
+{
+  "records": 47000,
+  "valid_records": 42316,
+  "records_needing_review": 4684,
+  "validation_pass_rate_pct": 90.03,
+  "average_quality_score_pct": 97.71,
+  "dataset_type": "synthetic"
+}

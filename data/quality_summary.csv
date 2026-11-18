@@ -1,0 +1,7 @@
+issue,failed_records
+Missing / invalid email,2889
+Missing spend,1637
+Non-positive spend,1637
+Missing supplier name,297
+Invalid status,0
+Invalid last-updated date,0

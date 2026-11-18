@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="Interactive synthetic document intelligence and data quality analytics dashboard.">
+  <title>Document Intelligence Dashboard | Venkat Ramana Nemani</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard-static.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-icon">V</span><span>VENKAT<span class="muted">.DATA</span></span></a>
+    <div class="topbar-center"><span class="live-dot"></span> LIVE INTERACTIVE PORTFOLIO DEMO</div>
+    <a class="back-link" href="index.html">← Portfolio</a>
+  </header>
+  <main class="shell">
+    <section class="heading-row">
+      <div><div class="eyebrow">DATA QUALITY / DOCUMENT INTELLIGENCE</div><h1>Operational quality overview</h1><p>Explore supplier-document records, validation results, and exception patterns.</p></div>
+      <div class="dataset-tag"><span>●</span> SYNTHETIC DATASET <b>47K</b></div>
+    </section>
+
+    <section class="notice"><b>Demo data notice</b><span>All records are synthetic. Dashboard KPIs and charts use the full 47,000-row aggregate; the record explorer uses a 900-row sample for fast browser performance.</span></section>
+
+    <section class="filters" aria-label="Dashboard filters">
+      <div class="filter-head"><span>FILTERS</span><button id="resetFilters" class="reset-button">Reset all ↺</button></div>
+      <label>Document category<select id="categoryFilter"><option value="all">All categories</option></select></label>
+      <label>Region<select id="regionFilter"><option value="all">All regions</option></select></label>
+      <label>Quality status<select id="qualityFilter"><option value="all">All records</option><option value="valid">Passed all checks</option><option value="review">Needs review</option></select></label>
+      <div class="filter-help">Metrics and charts update instantly when filters change.</div>
+    </section>
+
+    <section class="kpis" aria-label="Key performance indicators">
+      <article class="kpi"><span class="kpi-label">DOCUMENTS IN VIEW</span><strong id="kpiTotal">—</strong><small>Full-dataset aggregate</small></article>
+      <article class="kpi"><span class="kpi-label">VALIDATION PASS RATE</span><strong id="kpiPass">—</strong><small>All six QA checks passed</small></article>
+      <article class="kpi"><span class="kpi-label">RECORDS TO REVIEW</span><strong id="kpiExceptions">—</strong><small>One or more failed checks</small></article>
+      <article class="kpi"><span class="kpi-label">AVERAGE QUALITY SCORE</span><strong id="kpiQuality">—</strong><small>Six field-level checks</small></article>
+    </section>
+
+    <section class="chart-grid">
+      <article class="panel panel-wide"><div class="panel-title"><div><span class="panel-kicker">01 / VOLUME</span><h2>Document volume over time</h2></div><span class="panel-unit">RECORDS / MONTH</span></div><canvas id="trendChart" height="230" aria-label="Monthly document volume line chart"></canvas></article>
+      <article class="panel"><div class="panel-title"><div><span class="panel-kicker">02 / MIX</span><h2>Records by category</h2></div></div><canvas id="categoryChart" height="230" aria-label="Document category bar chart"></canvas></article>
+      <article class="panel"><div class="panel-title"><div><span class="panel-kicker">03 / QUALITY</span><h2>Validation status</h2></div></div><div class="donut-wrap"><canvas id="qualityChart" height="220" aria-label="Quality status donut chart"></canvas><div class="donut-legend"><span><i class="valid-dot"></i> Passed all checks</span><span><i class="review-dot"></i> Needs review</span></div></div></article>
+      <article class="panel panel-wide"><div class="panel-title"><div><span class="panel-kicker">04 / AUDIT</span><h2>Validation exceptions</h2><p>Counts can overlap when a record fails multiple checks.</p></div></div><canvas id="issueChart" height="220" aria-label="Validation issue horizontal bar chart"></canvas></article>
+    </section>
+
+    <section class="panel explorer-panel">
+      <div class="explorer-header"><div><span class="panel-kicker">05 / RECORD EXPLORER</span><h2>Inspect extracted records</h2><p>Search the included sample and export the filtered rows.</p></div><button id="downloadCsv" class="download-button">↓ Download sample CSV</button></div>
+      <div class="search-row"><input type="search" id="recordSearch" placeholder="Search document ID, supplier, email, or status…" aria-label="Search sample records"><span id="recordCount" class="record-count">Loading records…</span></div>
+      <div class="table-scroll"><table><thead><tr><th>DOCUMENT ID</th><th>CATEGORY</th><th>REGION</th><th>SUPPLIER</th><th>SPEND (INR)</th><th>STATUS</th><th>QUALITY</th><th>RESULT</th></tr></thead><tbody id="recordsBody"><tr><td colspan="8" class="loading">Loading synthetic records…</td></tr></tbody></table></div>
+      <div class="table-foot" id="sampleNote">The sample table is a convenience for exploration; headline metrics are calculated from all records.</div>
+    </section>
+
+    <section class="method-row"><div><span class="panel-kicker">HOW TO READ THIS DASHBOARD</span><h2>Six checks. One review queue.</h2><p>Supplier name present · spend present · spend positive · approved status · valid email format · parseable last-updated date.</p></div><div class="method-score"><strong>6</strong><span>FIELD-LEVEL<br>VALIDATION RULES</span></div></section>
+    <footer><span>DOCUMENT INTELLIGENCE / DATA QUALITY ANALYTICS</span><span>PORTFOLIO DEMO · ALL DATA SYNTHETIC</span><a href="index.html">Back to portfolio ↑</a></footer>
+  </main>
+  <script src="dashboard-static.js"></script>
+</body>
+</html>
